@@ -6,21 +6,26 @@ namespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
+        // Variáveis para armazenar os preços do estacionamento
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
+
+        // Lista para armazenar as placas dos veículos estacionados
         private List<string> veiculos = new List<string>();
 
+        // Construtor que recebe os preços iniciais do estacionamento
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
         }
 
+        // Método para adicionar um veículo ao estacionamento
         public void AdicionarVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine();
-            
+
             // Verifica se a placa já está cadastrada
             if (!veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
@@ -33,6 +38,7 @@ namespace DesafioFundamentos.Models
             }
         }
 
+        // Método para remover um veículo do estacionamento
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
@@ -44,6 +50,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                 if (int.TryParse(Console.ReadLine(), out int horas))
                 {
+                    // Calcula o preço total com base nas horas e preços definidos
                     decimal valorTotal = precoInicial + precoPorHora * horas;
 
                     // Remove a placa digitada da lista de veículos
@@ -62,6 +69,7 @@ namespace DesafioFundamentos.Models
             }
         }
 
+        // Método para listar os veículos estacionados
         public void ListarVeiculos()
         {
             // Verifica se há veículos no estacionamento
